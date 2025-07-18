@@ -12,13 +12,14 @@ function gotClicked()
 
     let button = this.innerHTML;
     makeSound(button);
-    
+    buttonAnimation(button);
 }
 }
 
 document.addEventListener("keydown", function(){
     //alert("key was pressed");
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 function makeSound(key)
@@ -57,5 +58,15 @@ function makeSound(key)
             alert("❌Key not available for music!");
             break;
     }
+    
+}
+
+function buttonAnimation(currentKey)
+{
+    var buttonClicked = document.querySelector("."+currentKey);
+    buttonClicked.classList.add("pressed");
+    setTimeout(function(){
+       buttonClicked.classList.remove("pressed"); 
+    }, 100);
     
 }
